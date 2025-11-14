@@ -1,0 +1,6 @@
+pydantic>=2.5
+pytest>=8.0
+
+# Optional: only needed if you want to call a real LLM instead of the
+# deterministic built-in mock reasoning engine.
+# openai>=1.30

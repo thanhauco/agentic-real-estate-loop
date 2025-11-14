@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets
+.env
+.venv/
+venv/
+env/
+
+# Local memory snapshots produced at runtime
+*.snapshot.json
+
+# Persisted CLI learning state
+.realestate_state.json
+*.state.json
+
+# IDE
+.vscode/
+.idea/
