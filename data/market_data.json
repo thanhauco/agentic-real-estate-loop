@@ -1,0 +1,113 @@
+{
+  "_meta": {
+    "source": "SAMPLE_DATASET",
+    "disclaimer": "Synthetic neighborhood market statistics for demo only. NOT real market data.",
+    "as_of": "2026-Q2"
+  },
+  "markets": {
+    "Ballard": {
+      "median_price": 705000,
+      "yoy_appreciation": 6.8,
+      "avg_days_on_market": 14,
+      "months_inventory": 1.6,
+      "price_trend": "rising",
+      "gross_rent_yield": 4.2
+    },
+    "Queen Anne": {
+      "median_price": 760000,
+      "yoy_appreciation": 5.1,
+      "avg_days_on_market": 18,
+      "months_inventory": 1.9,
+      "price_trend": "rising",
+      "gross_rent_yield": 3.8
+    },
+    "Bellevue": {
+      "median_price": 1180000,
+      "yoy_appreciation": 7.5,
+      "avg_days_on_market": 12,
+      "months_inventory": 1.3,
+      "price_trend": "rising strongly",
+      "gross_rent_yield": 3.5
+    },
+    "Redmond": {
+      "median_price": 880000,
+      "yoy_appreciation": 7.0,
+      "avg_days_on_market": 16,
+      "months_inventory": 1.5,
+      "price_trend": "rising",
+      "gross_rent_yield": 3.9
+    },
+    "Kirkland": {
+      "median_price": 905000,
+      "yoy_appreciation": 6.3,
+      "avg_days_on_market": 13,
+      "months_inventory": 1.4,
+      "price_trend": "rising",
+      "gross_rent_yield": 3.7
+    },
+    "Renton": {
+      "median_price": 615000,
+      "yoy_appreciation": 5.6,
+      "avg_days_on_market": 21,
+      "months_inventory": 2.4,
+      "price_trend": "steady",
+      "gross_rent_yield": 4.6
+    },
+    "Sammamish": {
+      "median_price": 1020000,
+      "yoy_appreciation": 6.9,
+      "avg_days_on_market": 12,
+      "months_inventory": 1.2,
+      "price_trend": "rising",
+      "gross_rent_yield": 3.4
+    },
+    "West Seattle": {
+      "median_price": 720000,
+      "yoy_appreciation": 6.0,
+      "avg_days_on_market": 16,
+      "months_inventory": 1.7,
+      "price_trend": "rising",
+      "gross_rent_yield": 4.3
+    },
+    "Mercer Island": {
+      "median_price": 1650000,
+      "yoy_appreciation": 6.5,
+      "avg_days_on_market": 14,
+      "months_inventory": 1.5,
+      "price_trend": "rising",
+      "gross_rent_yield": 3.0
+    },
+    "Issaquah": {
+      "median_price": 960000,
+      "yoy_appreciation": 6.6,
+      "avg_days_on_market": 13,
+      "months_inventory": 1.4,
+      "price_trend": "rising",
+      "gross_rent_yield": 3.6
+    },
+    "Shoreline": {
+      "median_price": 680000,
+      "yoy_appreciation": 5.8,
+      "avg_days_on_market": 18,
+      "months_inventory": 1.9,
+      "price_trend": "steady",
+      "gross_rent_yield": 4.1
+    },
+    "Tacoma": {
+      "median_price": 485000,
+      "yoy_appreciation": 5.0,
+      "avg_days_on_market": 24,
+      "months_inventory": 2.8,
+      "price_trend": "steady",
+      "gross_rent_yield": 5.2
+    },
+    "Everett": {
+      "median_price": 520000,
+      "yoy_appreciation": 5.3,
+      "avg_days_on_market": 22,
+      "months_inventory": 2.5,
+      "price_trend": "steady",
+      "gross_rent_yield": 5.0
+    }
+  }
+}

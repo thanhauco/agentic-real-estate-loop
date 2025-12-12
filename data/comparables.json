@@ -1,0 +1,134 @@
+{
+  "_meta": {
+    "source": "SAMPLE_DATASET",
+    "disclaimer": "Synthetic comparable sales for demo valuation only. NOT real transactions.",
+    "key_format": "<neighborhood>|<property_type>"
+  },
+  "comparables": {
+    "Ballard|single_family": [
+      { "address": "1512 Maple Ave NW", "sold_price": 712000, "sqft": 1880, "bedrooms": 3, "sold_days_ago": 28 },
+      { "address": "6022 22nd Ave NW", "sold_price": 681000, "sqft": 1760, "bedrooms": 3, "sold_days_ago": 51 },
+      { "address": "1330 NW 65th St", "sold_price": 698000, "sqft": 1810, "bedrooms": 3, "sold_days_ago": 73 }
+    ],
+    "Ballard|townhouse": [
+      { "address": "820 Leary Way", "sold_price": 624000, "sqft": 1620, "bedrooms": 3, "sold_days_ago": 35 },
+      { "address": "905 NW Market St", "sold_price": 605000, "sqft": 1580, "bedrooms": 3, "sold_days_ago": 60 },
+      { "address": "740 NW 56th St", "sold_price": 631000, "sqft": 1650, "bedrooms": 3, "sold_days_ago": 19 }
+    ],
+    "Queen Anne|condo": [
+      { "address": "220 Queen Anne Ave N #2", "sold_price": 521000, "sqft": 1080, "bedrooms": 2, "sold_days_ago": 40 },
+      { "address": "115 W Roy St #310", "sold_price": 540000, "sqft": 1120, "bedrooms": 2, "sold_days_ago": 66 },
+      { "address": "330 1st Ave W #5", "sold_price": 515000, "sqft": 1050, "bedrooms": 2, "sold_days_ago": 24 }
+    ],
+    "Bellevue|single_family": [
+      { "address": "7620 SE 30th St", "sold_price": 1185000, "sqft": 2650, "bedrooms": 4, "sold_days_ago": 33 },
+      { "address": "2810 78th Ave SE", "sold_price": 1120000, "sqft": 2540, "bedrooms": 4, "sold_days_ago": 58 },
+      { "address": "8002 SE 26th Pl", "sold_price": 1162000, "sqft": 2610, "bedrooms": 4, "sold_days_ago": 21 }
+    ],
+    "Bellevue|townhouse": [
+      { "address": "1555 116th Ave NE", "sold_price": 731000, "sqft": 1780, "bedrooms": 3, "sold_days_ago": 30 },
+      { "address": "1208 120th Ave NE", "sold_price": 705000, "sqft": 1700, "bedrooms": 3, "sold_days_ago": 47 },
+      { "address": "1640 118th Ave NE", "sold_price": 724000, "sqft": 1760, "bedrooms": 3, "sold_days_ago": 18 }
+    ],
+    "Redmond|single_family": [
+      { "address": "16110 NE 90th St", "sold_price": 858000, "sqft": 2240, "bedrooms": 4, "sold_days_ago": 26 },
+      { "address": "8420 164th Ave NE", "sold_price": 829000, "sqft": 2160, "bedrooms": 4, "sold_days_ago": 55 },
+      { "address": "15905 NE 85th St", "sold_price": 851000, "sqft": 2210, "bedrooms": 4, "sold_days_ago": 39 }
+    ],
+    "Redmond|condo": [
+      { "address": "8060 161st Ave NE #220", "sold_price": 505000, "sqft": 1070, "bedrooms": 2, "sold_days_ago": 44 },
+      { "address": "16101 NE 80th St #14", "sold_price": 489000, "sqft": 1030, "bedrooms": 2, "sold_days_ago": 70 },
+      { "address": "8125 160th Ave NE #6", "sold_price": 498000, "sqft": 1055, "bedrooms": 2, "sold_days_ago": 31 }
+    ],
+    "Kirkland|single_family": [
+      { "address": "11310 NE 58th St", "sold_price": 948000, "sqft": 2430, "bedrooms": 4, "sold_days_ago": 29 },
+      { "address": "10825 NE 62nd St", "sold_price": 915000, "sqft": 2360, "bedrooms": 4, "sold_days_ago": 52 },
+      { "address": "11502 NE 64th St", "sold_price": 940000, "sqft": 2410, "bedrooms": 4, "sold_days_ago": 22 }
+    ],
+    "Kirkland|townhouse": [
+      { "address": "318 5th Ave S", "sold_price": 688000, "sqft": 1700, "bedrooms": 3, "sold_days_ago": 27 },
+      { "address": "402 6th St S", "sold_price": 666000, "sqft": 1640, "bedrooms": 3, "sold_days_ago": 49 },
+      { "address": "211 7th Ave", "sold_price": 695000, "sqft": 1720, "bedrooms": 3, "sold_days_ago": 16 }
+    ],
+    "Renton|single_family": [
+      { "address": "920 Union Ave SE", "sold_price": 558000, "sqft": 1690, "bedrooms": 3, "sold_days_ago": 34 },
+      { "address": "4205 NE 10th St", "sold_price": 642000, "sqft": 2080, "bedrooms": 4, "sold_days_ago": 48 },
+      { "address": "705 Monroe Ave NE", "sold_price": 512000, "sqft": 1480, "bedrooms": 3, "sold_days_ago": 61 }
+    ],
+    "Sammamish|single_family": [
+      { "address": "2702 213th Ave SE", "sold_price": 1002000, "sqft": 2720, "bedrooms": 4, "sold_days_ago": 25 },
+      { "address": "21510 SE 26th St", "sold_price": 968000, "sqft": 2660, "bedrooms": 4, "sold_days_ago": 50 },
+      { "address": "2440 218th Pl SE", "sold_price": 995000, "sqft": 2700, "bedrooms": 4, "sold_days_ago": 37 }
+    ],
+    "Sammamish|townhouse": [
+      { "address": "23320 NE 8th St", "sold_price": 808000, "sqft": 1920, "bedrooms": 3, "sold_days_ago": 28 },
+      { "address": "604 228th Ln NE", "sold_price": 786000, "sqft": 1860, "bedrooms": 3, "sold_days_ago": 47 },
+      { "address": "23510 NE 10th Pl", "sold_price": 802000, "sqft": 1910, "bedrooms": 3, "sold_days_ago": 19 }
+    ],
+    "West Seattle|single_family": [
+      { "address": "4320 SW Oregon St", "sold_price": 742000, "sqft": 1930, "bedrooms": 3, "sold_days_ago": 30 },
+      { "address": "4011 SW Hudson St", "sold_price": 721000, "sqft": 1850, "bedrooms": 3, "sold_days_ago": 55 },
+      { "address": "4505 SW Findlay St", "sold_price": 738000, "sqft": 1910, "bedrooms": 3, "sold_days_ago": 21 }
+    ],
+    "West Seattle|townhouse": [
+      { "address": "3820 California Ave SW", "sold_price": 606000, "sqft": 1640, "bedrooms": 3, "sold_days_ago": 26 },
+      { "address": "4124 SW Genesee St", "sold_price": 588000, "sqft": 1580, "bedrooms": 3, "sold_days_ago": 49 },
+      { "address": "3712 SW Dakota St", "sold_price": 612000, "sqft": 1660, "bedrooms": 3, "sold_days_ago": 18 }
+    ],
+    "Mercer Island|single_family": [
+      { "address": "8302 SE 46th St", "sold_price": 1720000, "sqft": 3240, "bedrooms": 5, "sold_days_ago": 33 },
+      { "address": "7710 SE 71st St", "sold_price": 1650000, "sqft": 3120, "bedrooms": 5, "sold_days_ago": 58 },
+      { "address": "8540 SE 44th St", "sold_price": 1702000, "sqft": 3210, "bedrooms": 5, "sold_days_ago": 24 }
+    ],
+    "Mercer Island|condo": [
+      { "address": "2730 76th Ave SE #205", "sold_price": 858000, "sqft": 1320, "bedrooms": 2, "sold_days_ago": 40 },
+      { "address": "2810 76th Ave SE #112", "sold_price": 832000, "sqft": 1280, "bedrooms": 2, "sold_days_ago": 66 },
+      { "address": "2700 76th Ave SE #401", "sold_price": 849000, "sqft": 1300, "bedrooms": 2, "sold_days_ago": 23 }
+    ],
+    "Issaquah|single_family": [
+      { "address": "2510 NW Sammamish Rd", "sold_price": 952000, "sqft": 2540, "bedrooms": 4, "sold_days_ago": 27 },
+      { "address": "880 7th Ave NW", "sold_price": 921000, "sqft": 2450, "bedrooms": 4, "sold_days_ago": 52 },
+      { "address": "2205 NW Pine St", "sold_price": 944000, "sqft": 2520, "bedrooms": 4, "sold_days_ago": 20 }
+    ],
+    "Issaquah|townhouse": [
+      { "address": "720 NW Gilman Blvd", "sold_price": 698000, "sqft": 1720, "bedrooms": 3, "sold_days_ago": 29 },
+      { "address": "640 10th Ave NW", "sold_price": 676000, "sqft": 1660, "bedrooms": 3, "sold_days_ago": 48 },
+      { "address": "810 NW Maple St", "sold_price": 695000, "sqft": 1710, "bedrooms": 3, "sold_days_ago": 17 }
+    ],
+    "Shoreline|single_family": [
+      { "address": "17410 Linden Ave N", "sold_price": 671000, "sqft": 1770, "bedrooms": 3, "sold_days_ago": 31 },
+      { "address": "1620 NE 178th St", "sold_price": 705000, "sqft": 2120, "bedrooms": 4, "sold_days_ago": 54 },
+      { "address": "17220 Ashworth Ave N", "sold_price": 662000, "sqft": 1740, "bedrooms": 3, "sold_days_ago": 22 }
+    ],
+    "Tacoma|single_family": [
+      { "address": "1208 S Ainsworth Ave", "sold_price": 462000, "sqft": 1670, "bedrooms": 3, "sold_days_ago": 34 },
+      { "address": "7920 N 9th St", "sold_price": 531000, "sqft": 2020, "bedrooms": 4, "sold_days_ago": 48 },
+      { "address": "1410 S Cushman Ave", "sold_price": 451000, "sqft": 1620, "bedrooms": 3, "sold_days_ago": 61 }
+    ],
+    "Everett|single_family": [
+      { "address": "2910 Rucker Ave", "sold_price": 494000, "sqft": 1720, "bedrooms": 3, "sold_days_ago": 33 },
+      { "address": "3220 Lombard Ave", "sold_price": 481000, "sqft": 1680, "bedrooms": 3, "sold_days_ago": 57 },
+      { "address": "2715 Wetmore Ave", "sold_price": 489000, "sqft": 1700, "bedrooms": 3, "sold_days_ago": 26 }
+    ],
+    "Everett|townhouse": [
+      { "address": "1320 SE Everett Mall Way", "sold_price": 441000, "sqft": 1520, "bedrooms": 3, "sold_days_ago": 28 },
+      { "address": "1208 112th St SE", "sold_price": 428000, "sqft": 1480, "bedrooms": 3, "sold_days_ago": 50 },
+      { "address": "1402 100th St SE", "sold_price": 438000, "sqft": 1510, "bedrooms": 3, "sold_days_ago": 18 }
+    ],
+    "Bellevue|condo": [
+      { "address": "10650 NE 9th Pl #512", "sold_price": 698000, "sqft": 1170, "bedrooms": 2, "sold_days_ago": 30 },
+      { "address": "888 108th Ave NE #1204", "sold_price": 672000, "sqft": 1120, "bedrooms": 2, "sold_days_ago": 47 },
+      { "address": "10615 NE 9th Pl #606", "sold_price": 690000, "sqft": 1160, "bedrooms": 2, "sold_days_ago": 19 }
+    ],
+    "Redmond|townhouse": [
+      { "address": "8830 161st Ct NE", "sold_price": 744000, "sqft": 1800, "bedrooms": 3, "sold_days_ago": 27 },
+      { "address": "16120 NE 87th Way", "sold_price": 722000, "sqft": 1740, "bedrooms": 3, "sold_days_ago": 49 },
+      { "address": "8910 162nd Ave NE", "sold_price": 739000, "sqft": 1790, "bedrooms": 3, "sold_days_ago": 16 }
+    ],
+    "Kirkland|condo": [
+      { "address": "330 Kirkland Ave #118", "sold_price": 572000, "sqft": 1100, "bedrooms": 2, "sold_days_ago": 31 },
+      { "address": "245 Central Way #305", "sold_price": 556000, "sqft": 1050, "bedrooms": 2, "sold_days_ago": 53 },
+      { "address": "300 Kirkland Ave #402", "sold_price": 569000, "sqft": 1090, "bedrooms": 2, "sold_days_ago": 22 }
+    ]
+  }
+}
