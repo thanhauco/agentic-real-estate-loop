@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Real Estate AI — Orchestrator & Loop Engine</title>
+<style>
+  :root {
+    --bg: #0f172a; --panel: #1e293b; --panel2: #273449; --ink: #e2e8f0;
+    --muted: #94a3b8; --accent: #38bdf8; --good: #34d399; --warn: #fbbf24; --line: #334155;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+         background: var(--bg); color: var(--ink); line-height: 1.45; }
+  header { padding: 18px 24px; border-bottom: 1px solid var(--line); display: flex;
+           align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid;
+         grid-template-columns: 1fr 320px; gap: 18px; }
+  @media (max-width: 860px) { main { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em;
+              color: var(--muted); margin: 0 0 10px; }
+  textarea, input { width: 100%; background: var(--panel2); color: var(--ink);
+                    border: 1px solid var(--line); border-radius: 8px; padding: 10px; font: inherit; }
+  textarea { resize: vertical; min-height: 56px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .row > * { flex: 0 0 auto; }
+  label.inline { color: var(--muted); font-size: 13px; display: flex; align-items: center; gap: 6px; }
+  button { background: var(--accent); color: #03263a; border: none; border-radius: 8px;
+           padding: 10px 16px; font-weight: 600; cursor: pointer; }
+  button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  button:disabled { opacity: .5; cursor: default; }
+  .muted { color: var(--muted); }
+  .card { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px;
+          padding: 12px; margin-bottom: 10px; }
+  .card .top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .addr { font-weight: 600; }
+  .score { color: var(--good); font-weight: 700; white-space: nowrap; }
+  .pill { display: inline-block; font-size: 12px; color: var(--muted);
+          border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; margin-right: 6px; }
+  .concern { color: var(--warn); font-size: 13px; }
+  ul.tight { margin: 6px 0 0; padding-left: 18px; }
+  ul.tight li { margin: 2px 0; }
+  .kv { display: flex; justify-content: space-between; font-size: 13px; padding: 3px 0;
+        border-bottom: 1px dashed var(--line); }
+  .change { font-size: 12px; color: var(--good); margin: 2px 0; }
+  .warnbox { color: var(--warn); font-size: 13px; }
+  .summary { font-size: 15px; }
+  pre.changelog { white-space: pre-wrap; font-size: 12px; color: var(--muted); margin: 0; max-height: 220px; overflow: auto; }
+  .hint { font-size: 12px; color: var(--muted); }
+  .spacer { height: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Real Estate AI</h1>
+  <span class="sub">Multi-agent orchestrator + self-improving loop engine · sample data only</span>
+</header>
+
+<main>
+  <section>
+    <div class="panel">
+      <h2>Ask the broker assistant</h2>
+      <textarea id="request" placeholder="e.g. Find me a $700k house near Seattle with good investment potential"></textarea>
+      <div class="spacer"></div>
+      <div class="row">
+        <label class="inline">client
+          <input id="client" value="web-client" style="width: 130px" />
+        </label>
+        <button id="ask">Ask</button>
+        <span id="askStatus" class="hint"></span>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <div id="result" class="panel" style="display:none">
+      <h2>Result</h2>
+      <div id="summary" class="summary"></div>
+      <div id="uncertain" class="warnbox"></div>
+      <div id="recs"></div>
+      <div id="market"></div>
+      <div id="plans"></div>
+      <div id="warnings" class="warnbox"></div>
+    </div>
+
+    <div class="spacer"></div>
+    <div id="feedbackPanel" class="panel" style="display:none">
+      <h2>Teach the loops (feedback)</h2>
+      <p class="hint">Tick the listings the client liked, optionally add a note, then send feedback. The system adapts routing, ranking, retrieval, prompts, and memory.</p>
+      <input id="comment" placeholder="e.g. a couple look too expensive for the returns" />
+      <div class="spacer"></div>
+      <div class="row">
+        <label class="inline"><input type="checkbox" id="bought" /> client made an offer</label>
+        <label class="inline"><input type="checkbox" id="priceWrong" /> price estimate was off</label>
+        <button id="sendFeedback">Send feedback</button>
+        <span id="fbStatus" class="hint"></span>
+      </div>
+      <div id="adaptations"></div>
+    </div>
+  </section>
+
+  <aside>
+    <div class="panel">
+      <h2>KPIs</h2>
+      <div id="kpis"><span class="muted">No activity yet.</span></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="panel">
+      <h2>What it has learned</h2>
+      <div id="learned"><span class="muted">Nothing yet — give some feedback.</span></div>
+      <div class="spacer"></div>
+      <button class="ghost" id="reset">Reset learning</button>
+    </div>
+  </aside>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const fmtMoney = (n) => (typeof n === "number") ? "$" + n.toLocaleString("en-US", {maximumFractionDigits:0}) : "";
+
+async function api(method, path, body) {
+  const opts = { method, headers: { "Content-Type": "application/json" } };
+  if (body) opts.body = JSON.stringify(body);
+  const r = await fetch(path, opts);
+  const data = await r.json().catch(() => ({}));
+  return { ok: r.ok, status: r.status, data };
+}
+
+function renderResult(resp) {
+  $("result").style.display = "block";
+  $("summary").textContent = resp.executive_summary || "";
+
+  const unc = $("uncertain");
+  if (resp.uncertain) {
+    unc.textContent = "Uncertain: " + resp.uncertain.reason +
+      " — need: " + (resp.uncertain.required_information || []).join(", ");
+  } else { unc.textContent = ""; }
+
+  const recs = $("recs");
+  recs.innerHTML = "";
+  (resp.recommended_properties || []).forEach((p) => {
+    const div = document.createElement("div");
+    div.className = "card";
+    const concerns = (p.concerns || []).map(c => `<div class="concern">⚠ ${c}</div>`).join("");
+    const est = p.estimated_value ? `<span class="pill">est ${p.estimated_value}</span>` : "";
+    div.innerHTML = `
+      <div class="top">
+        <div><span class="addr">${p.address}</span> <span class="pill">${p.property}</span></div>
+        <div class="score">${Math.round(p.match_score)}/100</div>
+      </div>
+      <div><span class="pill">${fmtMoney(p.price)}</span>${est}</div>
+      ${concerns}
+      <label class="inline" style="margin-top:6px"><input type="checkbox" class="liked" value="${p.property}" /> client is interested</label>
+    `;
+    recs.appendChild(div);
+  });
+
+  const market = $("market");
+  if (resp.market_analysis) {
+    const m = resp.market_analysis;
+    market.innerHTML = `<div class="card"><div class="top">
+      <div class="addr">Market analysis</div><div class="score">${m.investment_score}/100</div></div>
+      <div class="muted">trend: ${m.price_trend}</div>
+      <div style="margin-top:6px">${m.market_summary || ""}</div>
+      ${(m.risks||[]).length ? "<ul class='tight'>" + m.risks.map(r=>`<li class='concern'>${r}</li>`).join("") + "</ul>" : ""}
+    </div>`;
+  } else { market.innerHTML = ""; }
+
+  const plans = $("plans");
+  const list = (title, arr) => (arr && arr.length)
+    ? `<div class="card"><div class="addr">${title}</div><ul class="tight">${arr.map(x=>`<li>${x}</li>`).join("")}</ul></div>` : "";
+  plans.innerHTML = list("Client action plan", resp.client_action_plan) + list("Follow-up tasks", resp.follow_up_tasks);
+
+  const warns = $("warnings");
+  warns.innerHTML = (resp.warnings || []).map(w => `! ${w}`).join("<br/>");
+
+  $("feedbackPanel").style.display = "block";
+  $("adaptations").innerHTML = "";
+}
+
+async function refreshSidebar() {
+  const k = await api("GET", "/api/kpis");
+  if (k.ok) {
+    $("kpis").innerHTML = Object.entries(k.data)
+      .filter(([key]) => key !== "per_agent_quality")
+      .map(([key, val]) => `<div class="kv"><span class="muted">${key}</span><span>${val}</span></div>`).join("");
+  }
+  const l = await api("GET", "/api/learned");
+  if (l.ok) {
+    const d = l.data;
+    const weights = Object.entries(d.ranking_weights || {}).map(([k,v]) => `${k} ${v}`).join(", ");
+    const log = (d.changelog || []).slice(-12).join("\n");
+    $("learned").innerHTML =
+      `<div class="kv"><span class="muted">ranking</span><span>${weights}</span></div>` +
+      `<div class="kv"><span class="muted">retrieval top_k</span><span>${(d.retrieval_config||{}).top_k}</span></div>` +
+      `<div class="spacer"></div><div class="muted">adaptations log:</div>` +
+      `<pre class="changelog">${log || "(none yet)"}</pre>`;
+  }
+}
+
+$("ask").addEventListener("click", async () => {
+  const request = $("request").value.trim();
+  if (!request) return;
+  $("ask").disabled = true; $("askStatus").textContent = "thinking…";
+  const r = await api("POST", "/api/handle", { request, client_id: $("client").value.trim() || "web-client" });
+  $("ask").disabled = false; $("askStatus").textContent = "";
+  if (r.ok) { renderResult(r.data.response); refreshSidebar(); }
+  else { $("askStatus").textContent = (r.data && r.data.error) || "error"; }
+});
+
+$("sendFeedback").addEventListener("click", async () => {
+  const liked = Array.from(document.querySelectorAll(".liked:checked")).map(c => c.value);
+  const body = {
+    comment: $("comment").value.trim(),
+    bought: $("bought").checked,
+    price_accurate: $("priceWrong").checked ? false : null,
+    clicked: liked.length > 0 || $("bought").checked ? true : null,
+    clicked_listings: liked,
+  };
+  $("sendFeedback").disabled = true; $("fbStatus").textContent = "learning…";
+  const r = await api("POST", "/api/feedback", body);
+  $("sendFeedback").disabled = false; $("fbStatus").textContent = "";
+  if (r.ok) {
+    const ev = r.data.evaluation || {};
+    const changes = r.data.changes || [];
+    $("adaptations").innerHTML =
+      `<div class="spacer"></div><div class="kv"><span class="muted">evaluation overall</span><span>${ev.overall}</span></div>` +
+      (changes.length
+        ? `<div class="spacer"></div>` + changes.map(c => `<div class="change">✓ ${c}</div>`).join("")
+        : `<div class="muted">No adaptations needed this time.</div>`);
+    refreshSidebar();
+  } else { $("fbStatus").textContent = (r.data && r.data.error) || "error"; }
+});
+
+$("reset").addEventListener("click", async () => {
+  await api("POST", "/api/reset", {});
+  refreshSidebar();
+  $("adaptations").innerHTML = "<div class='muted'>Learning reset to defaults.</div>";
+});
+
+refreshSidebar();
+</script>
+</body>
+</html>
